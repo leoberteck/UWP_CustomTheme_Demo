@@ -7,7 +7,39 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <local:MainViewModel />
+    </Page.DataContext>
 
+    <Page.Resources>
+        <DataTemplate x:Key="itemColorTemplate">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Rectangle Height="30" Margin="5" Fill="{Binding}" />
+                <TextBlock Grid.Column="1" Text="{Binding}" Margin="10,0" Style="{StaticResource SubheaderTextBlockStyle}" FontSize="14" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ItemsControl MaxWidth="300">
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="FrameworkElement">
+                    <Setter Property="FrameworkElement.Margin" Value="5"/>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <Rectangle Height="50" Fill="{StaticResource color1}"/>
+            <Rectangle Height="50" Fill="{StaticResource color2}"/>
+            <Rectangle Height="50" Fill="{StaticResource color3}"/>
+            <Rectangle Height="50" Fill="{StaticResource color4}"/>
+
+            <ComboBox ItemsSource="{Binding ListColors}" ItemTemplate="{StaticResource itemColorTemplate}" HorizontalAlignment="Stretch" SelectedItem="{Binding Color1, Mode=TwoWay}"/>
+            <ComboBox ItemsSource="{Binding ListColors}" ItemTemplate="{StaticResource itemColorTemplate}" HorizontalAlignment="Stretch" SelectedItem="{Binding Color2, Mode=TwoWay}"/>
+            <ComboBox ItemsSource="{Binding ListColors}" ItemTemplate="{StaticResource itemColorTemplate}" HorizontalAlignment="Stretch" SelectedItem="{Binding Color3, Mode=TwoWay}"/>
+            <ComboBox ItemsSource="{Binding ListColors}" ItemTemplate="{StaticResource itemColorTemplate}" HorizontalAlignment="Stretch" SelectedItem="{Binding Color4, Mode=TwoWay}"/>
+        </ItemsControl>
     </Grid>
 </Page>

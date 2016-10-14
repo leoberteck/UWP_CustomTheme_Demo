@@ -45,6 +45,10 @@ namespace DynamicResourceTest
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+            Helper.SetResourceKey("color1", Helper.GetSettings("color1"));
+            Helper.SetResourceKey("color2", Helper.GetSettings("color2"));
+            Helper.SetResourceKey("color3", Helper.GetSettings("color3"));
+            Helper.SetResourceKey("color4", Helper.GetSettings("color4"));
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -78,6 +82,8 @@ namespace DynamicResourceTest
                 Window.Current.Activate();
             }
         }
+
+        
 
         /// <summary>
         /// Invoked when Navigation to a certain page fails
